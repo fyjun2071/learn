@@ -39,33 +39,33 @@ public class BinaryTreeTest {
 
         //先序遍历（递归）
         System.out.println("先序遍历（递归）------------------------------");
-        binaryTree.preRecursive(root);
+        binaryTree.preOrderTraversal(root);
         System.out.println();
 
         //中序遍历（递归）
         System.out.println("中序遍历（递归）------------------------------");
-        binaryTree.midRecursive(root);
+        binaryTree.inOrderTraversal(root);
         System.out.println();
 
         //后序遍历（递归）
         System.out.println("后序遍历（递归）------------------------------");
-        binaryTree.bacRecursive(root);
+        binaryTree.postOrderTraversal(root);
         System.out.println();
 
 
         //先序遍历（非递归）
         System.out.println("先序遍历（非递归）------------------------------");
-        binaryTree.preUnrecursive(root);
+        binaryTree.preOrderTraversalbyLoop(root);
         System.out.println();
 
         //中序遍历（非递归）
         System.out.println("中序遍历（非递归）------------------------------");
-        binaryTree.midUnrecursive(root);
+        binaryTree.inOrderTraversalbyLoop(root);
         System.out.println();
 
         //后序遍历（非递归）
         System.out.println("后序遍历（非递归）------------------------------");
-        binaryTree.bacUnrecursive(root);
+        binaryTree.postOrderTraversalbyLoop(root);
         System.out.println();
 
         //层次遍历（非递归）

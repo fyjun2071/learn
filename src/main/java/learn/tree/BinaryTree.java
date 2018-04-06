@@ -1,6 +1,8 @@
 package learn.tree;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Stack;
 
 /**
@@ -31,11 +33,11 @@ public class BinaryTree<T> {
      *
      * @param root
      */
-    public void preRecursive(TreeNode<T> root) {
+    public void preOrderTraversal(TreeNode<T> root) {
         if (root != null) {
-            System.out.print(root.data);
-            preRecursive(root.left);
-            preRecursive(root.right);
+            System.out.print(root.data + " ");
+            preOrderTraversal(root.left);
+            preOrderTraversal(root.right);
         }
     }
 
@@ -44,11 +46,11 @@ public class BinaryTree<T> {
      *
      * @param root
      */
-    public void midRecursive(TreeNode<T> root) {
+    public void inOrderTraversal(TreeNode<T> root) {
         if (root != null) {
-            midRecursive(root.left);
-            System.out.print(root.data);
-            midRecursive(root.right);
+            inOrderTraversal(root.left);
+            System.out.print(root.data + " ");
+            inOrderTraversal(root.right);
         }
     }
 
@@ -57,11 +59,11 @@ public class BinaryTree<T> {
      *
      * @param root
      */
-    public void bacRecursive(TreeNode<T> root) {
+    public void postOrderTraversal(TreeNode<T> root) {
         if (root != null) {
-            bacRecursive(root.left);
-            bacRecursive(root.right);
-            System.out.print(root.data);
+            postOrderTraversal(root.left);
+            postOrderTraversal(root.right);
+            System.out.print(root.data + " ");
         }
     }
 
@@ -70,7 +72,7 @@ public class BinaryTree<T> {
      * 思路：对于任意节点T，访问这个节点并压入栈中，然后访问节点的左子树，
      * 遍历完左子树后，取出栈顶的节点T，再先序遍历T的右子树
      */
-    public void preUnrecursive(TreeNode<T> root) {
+    public void preOrderTraversalbyLoop(TreeNode<T> root) {
         TreeNode<T> p = root;//p为当前节点
         Stack<TreeNode<T>> stack = new Stack<>();
         //栈不为空时，或者p不为空时循环
@@ -78,7 +80,7 @@ public class BinaryTree<T> {
             if (p != null) {
                 //当前节点不为空。访问并压入栈中。并将当前节点赋值为左儿子
                 stack.push(p);
-                System.out.print(p.data);
+                System.out.print(p.data + " ");
                 p = p.left;
             } else {
                 //当前节点为空：
@@ -96,7 +98,7 @@ public class BinaryTree<T> {
      * 思路：先将T入栈，遍历左子树；遍历完左子树返回时，栈顶元素应为T，
      * 出栈，访问T->data，再中序遍历T的右子树。
      */
-    public void midUnrecursive(TreeNode<T> root) {
+    public void inOrderTraversalbyLoop(TreeNode<T> root) {
         TreeNode<T> p = root;//p为当前节点
         Stack<TreeNode<T>> stack = new Stack<>();
         //栈不为空时，或者p不为空时循环
@@ -111,7 +113,7 @@ public class BinaryTree<T> {
                 //  2、当p指向的右儿子时，此时栈顶元素必然是它的爷爷节点
                 //取出栈顶元素，赋值为right
                 p = stack.pop();
-                System.out.print(p.data);
+                System.out.print(p.data + " ");
                 p = p.right;
             }
         }
@@ -120,22 +122,23 @@ public class BinaryTree<T> {
     /**
      * 后序遍历二叉树（非递归）
      */
-    public void bacUnrecursive(TreeNode<T> root) {
+    public void postOrderTraversalbyLoop(TreeNode<T> root) {
         Stack<TreeNode<T>> stack = new Stack<>();
-        TreeNode<T> p = root,prev = root;
-        while(p!=null || !stack.isEmpty()){
-            while(p!=null){
+        TreeNode<T> p = root;
+        TreeNode<T> prev = root;
+        while (p != null || !stack.isEmpty()) {
+            while (p != null) {
                 stack.push(p);
                 p = p.left;
             }
-            if(!stack.isEmpty()){
+            if (!stack.isEmpty()) {
                 TreeNode<T> temp = stack.peek().right;
-                if(temp == null||temp == prev){
+                if (temp == null || temp == prev) {
                     p = stack.pop();
-                    System.out.print(p.data);
+                    System.out.print(p.data + " ");
                     prev = p;
                     p = null;
-                }else{
+                } else {
                     p = temp;
                 }
             }
@@ -151,7 +154,7 @@ public class BinaryTree<T> {
         queue.push(root);
         while (!queue.isEmpty()) {
             p = queue.removeFirst();
-            System.out.print(p.data);
+            System.out.print(p.data + " ");
             if (p.left != null) {
                 queue.add(p.left);
             }
