@@ -1,8 +1,11 @@
-package learn.sort.java;
+package learn.java;
+
+import org.junit.Test;
 
 public class Base {
 
-    public static void main(String[] args) {
+    @Test
+    public void test1() {
         int a = 1000;
         System.out.println(a == new Integer(1000));
         System.out.println(new Integer(1000).equals(1000));
