@@ -19,4 +19,13 @@ public class Base {
         System.out.println(Integer.MAX_VALUE);
     }
 
+    @Test
+    public void hashMap() {
+        HashMap<Integer, Object> map = new HashMap<>();
+        map.put(1, 1);
+        map.put(17, 1);
+        map.put(33, 1);
+        System.out.println(map);
+    }
+
 }
