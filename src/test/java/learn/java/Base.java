@@ -10,6 +10,7 @@ public class Base {
         System.out.println(a == new Integer(1000));
         System.out.println(new Integer(1000).equals(1000));
         System.out.println(new Integer(1000).equals(new Integer(1000)));
+
         System.out.println(new Integer(10) == new Integer(10));
         System.out.println(new Boolean(true) == new Boolean(true));
         System.out.println(new String("abc") == new String("abc"));
@@ -21,7 +22,7 @@ public class Base {
 
     @Test
     public void hashMap() {
-        HashMap<Integer, Object> map = new HashMap<>();
+        HashMap<Integer, Object> map = new HashMap<>(2);
         map.put(1, 1);
         map.put(17, 1);
         map.put(33, 1);
