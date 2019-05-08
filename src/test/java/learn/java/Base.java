@@ -2,6 +2,8 @@ package learn.java;
 
 import org.junit.Test;
 
+import java.util.HashMap;
+
 public class Base {
 
     @Test
@@ -20,8 +22,6 @@ public class Base {
         System.out.println(Integer.MAX_VALUE);
     }
 
-<<<<<<< HEAD
-=======
     @Test
     public void hashMap() {
         HashMap<Integer, Object> map = new HashMap<>(2);
@@ -30,6 +30,4 @@ public class Base {
         map.put(33, 1);
         System.out.println(map);
     }
-
->>>>>>> a7d8841d66b81520a58707f2566028bc4e6e0127
 }
