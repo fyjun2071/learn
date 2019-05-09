@@ -4,12 +4,17 @@ import java.util.ArrayDeque;
 import java.util.Queue;
 
 /**
- * 单词查找树
+ * R向单词查找树
  */
 public class TrieST<V> {
 
     private static int R = 256;
     private Node root = new Node();
+
+    private static class Node {
+        private Object val;
+        private Node[] next = new Node[R];
+    }
 
     public V get(String key) {
         Node x = get(root, key, 0);
@@ -73,9 +78,29 @@ public class TrieST<V> {
         }
     }
 
-    private static class Node {
-        private Object val;
-        private Node[] next = new Node[R];
+    private Node delete(Node x, String key, int d) {
+        if (x == null) {
+            return null;
+        }
+
+        if (d == key.length()) {
+            x.val = null;
+        } else {
+            char c = key.charAt(d);
+            x.next[c] = delete(x.next[c], key, d + 1);
+        }
+
+        if (x.val != null) {
+            return x;
+        }
+
+        for (char c = 0; c<R; c++) {
+            if (x.next[c] != null) {
+                return x;
+            }
+        }
+
+        return null;
     }
 
     public static void main(String[] args) {
