@@ -2,6 +2,9 @@ package learn.java;
 
 import java.util.Hashtable;
 
+/**
+ * 最近最久未使用
+ */
 public class LRUCache {
 
     private int cacheSize;
