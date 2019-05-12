@@ -1,7 +1,7 @@
 package learn.sort;
 
 /**
- * 优先队列
+ * 优先队列，大顶堆
  */
 public class MaxPQ<Key extends Comparable<Key>> {
 
