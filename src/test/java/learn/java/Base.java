@@ -30,4 +30,13 @@ public class Base {
         map.put(33, 1);
         System.out.println(map);
     }
+
+    @Test
+    public void test2() {
+        System.out.println(8 << 1);
+        System.out.println(8 >> 1);
+        System.out.println(8 >>> 1);
+        System.out.println(-8 >>> 1);
+        System.out.println(-8 >> 1);
+    }
 }
