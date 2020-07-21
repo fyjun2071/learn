@@ -1,7 +1,7 @@
 package learn.search;
 
 /**
- * 快速排序
+ * 快速排序解决topk问题
  */
 public class TopK {
 
