@@ -12,7 +12,7 @@ public class MSD {
     private static String[] aux;
 
     private static int charAt(String s, int d) {
-        return d < s.length() ? s.charAt(d) - 96 : -1;
+        return d < s.length() ? s.charAt(d) - 97 : -1;
     }
 
     public static void sort(String[] a) {
@@ -22,26 +22,33 @@ public class MSD {
     }
 
     public static void sort(String[] a, int lo, int hi, int d) {
+        System.out.println("************************************************************");
+        System.out.println(Arrays.toString(a) + ":" + lo + ":" + hi + ":" + d);
         // 以第d个字符为键将a[lo]至a[hi]排序
         if (hi <= lo + M) {
             insertionSort(a, lo, hi, d);
             return;
         }
 
-        int[] count = new int[R + 3];
+        int[] count = new int[R + 2];
+        int r;
         // 计算频率
         for (int i = lo; i <= hi; i++) {
-            count[charAt(a[i], d) + 2]++;
+            r = charAt(a[i], d) + 2;
+            count[r]++;
         }
 
         // 将频率转换为索引
-        for (int i = 0; i < R; i++) {
+        for (int i = 0; i < R + 1; i++) {
             count[i + 1] += count[i];
         }
 
+        System.out.println(Arrays.toString(count));
+
         // 将元素分类
         for (int i = lo; i <= hi; i++) {
-            aux[count[charAt(a[i], d) + 1]++] = a[i];
+            r = charAt(a[i], d) + 1;
+            aux[count[r]++] = a[i];
         }
 
         // 回写
@@ -50,8 +57,13 @@ public class MSD {
         }
 
         // 递归以每个字符为键进行排序
-        for (int r = 0; r < R; r++) {
-            sort(a, lo + count[r], lo + count[r + 1], d + 1);
+        for (int i = 0; i < R; i++) {
+            int l = lo + count[i];
+            int h = lo + count[i + 1] - 1;
+            if (l < h) {
+                sort(a, l, h, d + 1);
+            }
+
         }
     }
 
@@ -67,21 +79,22 @@ public class MSD {
 
     public static void main(String[] args) {
         String[] a = new String[]{"she",
-                                  "sells",
-                                  "seashells",
-                                  "by",
-                                  "the",
-                                  "seashore",
-                                  "the",
-                                  "shells",
-                                  "she",
-                                  "sells",
-                                  "are",
-                                  "surely",
-                                  "seashells"
-                                  };
+                "sells",
+                "seashells",
+                "by",
+                "the",
+                "seashore",
+                "the",
+                "shells",
+                "she",
+                "sells",
+                "are",
+                "surely",
+                "seashells",
+                "zero"
+        };
         sort(a);
-        Arrays.stream(a).forEach(System.out::println);
+        System.out.println(Arrays.toString(a));
     }
 
 }

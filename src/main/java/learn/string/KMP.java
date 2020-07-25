@@ -28,7 +28,7 @@ public class KMP {
     public int search(String txt) {
         // 在txt上模拟DFA的运行
         int i, j, N = txt.length(), M = pat.length();
-        for (i = 0,j=0;i<N&&j<M;i++) {
+        for (i = 0, j = 0; i < N && j < M; i++) {
             j = dfa[txt.charAt(i)][j];
         }
 
@@ -37,6 +37,18 @@ public class KMP {
         } else {
             return N;       // 未找到匹配(到达文本字符串的结尾)
         }
+    }
+
+    public static void main(String[] args) {
+        String pat = "AABRAACADABRAACAADABRA";
+        String txt = "AACAA";
+        KMP kmp = new KMP(pat);
+        int offset = kmp.search(txt);
+        System.out.println(pat);
+        for (int i = 0; i < offset; i++) {
+            System.out.print(" ");
+        }
+        System.out.println(txt);
     }
 
 }

@@ -66,7 +66,7 @@ public class Quick3String {
                                   "seashells"
         };
         sort(a);
-        Arrays.stream(a).forEach(System.out::println);
+        System.out.println(Arrays.toString(a));
     }
 
 }

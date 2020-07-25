@@ -3,6 +3,8 @@
 a = []
 
 opt = []
+
+
 # 递归方法
 def rec_opt(arr, i):
     if i == 0:
@@ -13,6 +15,7 @@ def rec_opt(arr, i):
         A = opt[i - 2] + opt[i]
         B = opt[i - 1]
         return max(A, B)
+
 
 # 动态规划方法
 def dp_opt(arr):
